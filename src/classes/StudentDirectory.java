@@ -5,6 +5,7 @@
 package classes;
 
 import java.util.ArrayList;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -13,6 +14,13 @@ import java.util.ArrayList;
 public class StudentDirectory {
 
     private ArrayList<Student> StudentDirectory;
+    StudentDirectory sd;
+
+    public StudentDirectory() {
+        this.StudentDirectory = new ArrayList<>();
+        
+        
+    }
 
     public ArrayList<Student> getStudentDirectory() {
         return StudentDirectory;
@@ -24,6 +32,8 @@ public class StudentDirectory {
 
     public Student addStudent(String NUID, String password) {
         Student s = new Student();
+        s.setNUID(NUID);
+        s.setPassword(password);
         StudentDirectory.add(s);
         return s;
     }
@@ -36,11 +46,19 @@ public class StudentDirectory {
         }
         return null;
     }
-    
-    public void deleteStudent(Student s){
-    StudentDirectory.remove(s);
+
+    public void deleteStudent(Student s) {
+        StudentDirectory.remove(s);
     }
-    
-    
+
+    public boolean validateStudentLogin(String NUID, char[] Password) {
+        for (Student logincred : StudentDirectory) {
+            if (logincred.getNUID().equals(NUID) && BCrypt.checkpw(String.valueOf(Password), logincred.getPassword()))
+                return true;
+        }
+
+        return false;
+
+    }
 
 }

@@ -37,16 +37,21 @@ public class MainJFrame extends javax.swing.JFrame {
         workAreaContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 800));
 
-        btnJPanel.setMaximumSize(new java.awt.Dimension(150, 32767));
-        btnJPanel.setMinimumSize(new java.awt.Dimension(150, 800));
-        btnJPanel.setPreferredSize(new java.awt.Dimension(150, 803));
+        jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        jSplitPane1.setMaximumSize(new java.awt.Dimension(1000, 800));
+        jSplitPane1.setMinimumSize(new java.awt.Dimension(1000, 800));
+        jSplitPane1.setPreferredSize(new java.awt.Dimension(1000, 800));
 
-        btnStudentLogin.setText("Login");
+        btnJPanel.setBackground(new java.awt.Color(0, 255, 51));
+        btnJPanel.setMaximumSize(new java.awt.Dimension(1000, 200));
+        btnJPanel.setMinimumSize(new java.awt.Dimension(100, 100));
+        btnJPanel.setPreferredSize(new java.awt.Dimension(1000, 200));
+
+        btnStudentLogin.setText("WELCOME");
         btnStudentLogin.setMaximumSize(new java.awt.Dimension(100, 25));
         btnStudentLogin.setMinimumSize(new java.awt.Dimension(100, 25));
-        btnStudentLogin.setPreferredSize(new java.awt.Dimension(100, 25));
+        btnStudentLogin.setPreferredSize(new java.awt.Dimension(150, 50));
         btnStudentLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStudentLoginActionPerformed(evt);
@@ -58,20 +63,23 @@ public class MainJFrame extends javax.swing.JFrame {
         btnJPanelLayout.setHorizontalGroup(
             btnJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnJPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(btnStudentLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(798, Short.MAX_VALUE)
+                .addComponent(btnStudentLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
         );
         btnJPanelLayout.setVerticalGroup(
             btnJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnJPanelLayout.createSequentialGroup()
-                .addGap(320, 320, 320)
+                .addGap(22, 22, 22)
                 .addComponent(btnStudentLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(458, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        jSplitPane1.setLeftComponent(btnJPanel);
+        jSplitPane1.setTopComponent(btnJPanel);
 
+        workAreaContainer.setBackground(new java.awt.Color(0, 102, 204));
+        workAreaContainer.setMinimumSize(new java.awt.Dimension(600, 300));
+        workAreaContainer.setPreferredSize(new java.awt.Dimension(1000, 800));
         workAreaContainer.setLayout(new java.awt.CardLayout());
         jSplitPane1.setRightComponent(workAreaContainer);
 
@@ -79,11 +87,15 @@ public class MainJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();

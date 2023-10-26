@@ -8,16 +8,17 @@ package classes;
  *
  * @author visho
  */
-public class Student {
-    String NUID;
+public class Professor {
+    
+    String profNUID;
     String password;
 
-    public String getNUID() {
-        return NUID;
+    public String getProfNUID() {
+        return profNUID;
     }
 
-    public void setNUID(String NUID) {
-        this.NUID = NUID;
+    public void setProfNUID(String profNUID) {
+        this.profNUID = profNUID;
     }
 
     public String getPassword() {
@@ -28,8 +29,5 @@ public class Student {
         this.password = password;
     }
     
-    
-    
-           
     
 }

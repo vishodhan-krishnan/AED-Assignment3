@@ -4,23 +4,35 @@
  */
 package student;
 
+import classes.CourseCreationHistory;
+import classes.CourseCreation;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author visho
  */
 public class RegisterCoursesJPanel extends javax.swing.JPanel {
-    public JPanel workareaContainer;
+
+    JPanel workareaContainer;
+    CourseCreationHistory cc;
 
     /**
      * Creates new form RegisterJPanel
      */
     public RegisterCoursesJPanel(JPanel jPanel) {
-                this.workareaContainer = jPanel;
-
+        this.workareaContainer = jPanel;
+        this.cc = new CourseCreationHistory();
+        cc.addCourseOffered("AED", "101", "fall", "Tom Cruise", "Tuesday", "Thursday",
+                "12-3PM", "4-7PM");
+//        cc.addCourseOffered("Fall", "Tom Cruise", "Monday", "Wednesday", "12-3PM",
+//                "Application Engineering and Design", "INFO5100");
+//        cc.addCourseOffered("Fall", "Hugh Jackman", "Wednesday","Thursday", "3-6PM",
+//                "Data Science Engineering Methodology and Tools", "INFO6210");
         initComponents();
+
     }
 
     /**
@@ -34,7 +46,7 @@ public class RegisterCoursesJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableCourseDetails = new javax.swing.JTable();
+        tablenewCourseDetails = new javax.swing.JTable();
         btnViewDetails = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         comboTermSelect = new javax.swing.JComboBox<>();
@@ -48,7 +60,7 @@ public class RegisterCoursesJPanel extends javax.swing.JPanel {
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(500, 400));
 
-        tableCourseDetails.setModel(new javax.swing.table.DefaultTableModel(
+        tablenewCourseDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -70,11 +82,16 @@ public class RegisterCoursesJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tableCourseDetails.setPreferredSize(new java.awt.Dimension(300, 210));
-        jScrollPane1.setViewportView(tableCourseDetails);
+        tablenewCourseDetails.setPreferredSize(new java.awt.Dimension(300, 210));
+        jScrollPane1.setViewportView(tablenewCourseDetails);
 
         btnViewDetails.setText("VIEW");
         btnViewDetails.setPreferredSize(new java.awt.Dimension(150, 50));
+        btnViewDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewDetailsActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Select Term:");
@@ -107,10 +124,10 @@ public class RegisterCoursesJPanel extends javax.swing.JPanel {
                         .addGap(52, 52, 52)
                         .addComponent(comboTermSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnViewDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(300, 300, 300)
+                .addGap(200, 200, 200)
                 .addComponent(jLabel1)
                 .addGap(291, 291, 291))
         );
@@ -144,6 +161,11 @@ public class RegisterCoursesJPanel extends javax.swing.JPanel {
         layout.previous(workareaContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailsActionPerformed
+        // TODO add your handling code here:
+        populateTable();
+    }//GEN-LAST:event_btnViewDetailsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -152,6 +174,23 @@ public class RegisterCoursesJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableCourseDetails;
+    private javax.swing.JTable tablenewCourseDetails;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tablenewCourseDetails.getModel();
+        model.setRowCount(0);
+        for (CourseCreation cc : cc.getCourseHistory()) {
+            if (cc.getTerm().equals("fall")) {
+                Object[] row = new Object[4];
+                row[0] = cc.getCourseID();
+                row[1] = cc.getCourseName();
+                
+//               
+
+                model.addRow(row);
+            }
+        }
+
+    }
 }

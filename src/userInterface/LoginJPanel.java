@@ -4,9 +4,14 @@
  */
 package userInterface;
 
-import faculty.facultyHomepageJPanel;
+import classes.ProfessorDirectory;
+import classes.Student;
+import classes.StudentDirectory;
+import professor.professorHomepageJPanel;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import org.mindrot.jbcrypt.BCrypt;
 import student.HomepageJPanel;
 
 /**
@@ -16,11 +21,23 @@ import student.HomepageJPanel;
 public class LoginJPanel extends javax.swing.JPanel {
 
     private JPanel workareaContainer;
+    StudentDirectory Sdirectory;
+    ProfessorDirectory Pdirectory;
 
     /**
      * Creates new form SecondJPanel
      */
     public LoginJPanel(JPanel jPanel) {
+        Sdirectory = new StudentDirectory();
+        Sdirectory.addStudent("1234561", BCrypt.hashpw("visho", BCrypt.gensalt()));
+        Sdirectory.addStudent("1234562", BCrypt.hashpw("priyam", BCrypt.gensalt()));
+        Sdirectory.addStudent("1234563", BCrypt.hashpw("saiyam", BCrypt.gensalt()));
+
+        Pdirectory = new ProfessorDirectory();
+        Pdirectory.addProfessor("1234123", BCrypt.hashpw("profone", BCrypt.gensalt()));
+        Pdirectory.addProfessor("2345234", BCrypt.hashpw("proftwo", BCrypt.gensalt()));
+        Pdirectory.addProfessor("3456345", BCrypt.hashpw("profthree", BCrypt.gensalt()));
+
         this.workareaContainer = jPanel;
         initComponents();
     }
@@ -38,10 +55,13 @@ public class LoginJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtNUID = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
         LoginBtn = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        dropdownRoleSelector = new javax.swing.JComboBox<>();
+        ddRoleSelector = new javax.swing.JComboBox<>();
+        txtPassword = new javax.swing.JPasswordField();
+
+        setMaximumSize(new java.awt.Dimension(1000, 800));
+        setMinimumSize(new java.awt.Dimension(1000, 800));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -60,10 +80,10 @@ public class LoginJPanel extends javax.swing.JPanel {
 
         jLabel4.setText("ROLE:");
 
-        dropdownRoleSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Faculty", "Admin" }));
-        dropdownRoleSelector.addActionListener(new java.awt.event.ActionListener() {
+        ddRoleSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Professor", "Admin" }));
+        ddRoleSelector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dropdownRoleSelectorActionPerformed(evt);
+                ddRoleSelectorActionPerformed(evt);
             }
         });
 
@@ -72,82 +92,114 @@ public class LoginJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(500, 500, 500)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(350, 350, 350)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(329, 329, 329))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(160, 160, 160)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNUID, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                            .addComponent(txtPassword)
-                            .addComponent(dropdownRoleSelector, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(450, 450, 450)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(416, 416, 416)
-                        .addComponent(LoginBtn)))
-                .addContainerGap(171, Short.MAX_VALUE))
+                            .addComponent(txtNUID)
+                            .addComponent(ddRoleSelector, 0, 126, Short.MAX_VALUE)
+                            .addComponent(txtPassword))
+                        .addGap(289, 289, 289))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(LoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(447, 447, 447))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtNUID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNUID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(dropdownRoleSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addComponent(LoginBtn)
-                .addContainerGap(479, Short.MAX_VALUE))
+                    .addComponent(ddRoleSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(LoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(430, 430, 430))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
         // TODO add your handling code here:
-        if (dropdownRoleSelector.getSelectedItem().equals("Student")) {
-               HomepageJPanel hjp = new HomepageJPanel(workareaContainer);
-               workareaContainer.add("studentHomepageJPanel",hjp);
-               CardLayout layout = (CardLayout) workareaContainer.getLayout();
-               layout.next(workareaContainer);
-               
+        if (ddRoleSelector.getSelectedItem().equals("Student")) {
+            if (Sdirectory.validateStudentLogin(txtNUID.getText(), txtPassword.getPassword())) {
+                JOptionPane.showMessageDialog(this, "Login Successful!");
+                txtNUID.setText("");
+                txtPassword.setText("");
+                HomepageJPanel hjp = new HomepageJPanel(workareaContainer);
+                workareaContainer.add("HomepageoldJPanel", hjp);
+                CardLayout layout = (CardLayout) workareaContainer.getLayout();
+                layout.next(workareaContainer);
+            } else {
+                JOptionPane.showMessageDialog(this, "Student does not exist! \n or Incorrect credentials! ");
+            }
+        } else if (ddRoleSelector.getSelectedItem().equals("Professor")) {
+            if (Pdirectory.validateProfessorLogin(txtNUID.getText(), txtPassword.getPassword())) {
+                JOptionPane.showMessageDialog(this, "Login Successful!");
+                txtNUID.setText("");
+                txtPassword.setText("");
+                professorHomepageJPanel hjp = new professorHomepageJPanel();
+                workareaContainer.add("professorHomepageJPanel", hjp);
+                CardLayout layout = (CardLayout) workareaContainer.getLayout();
+                layout.next(workareaContainer);
 
-        } else if (dropdownRoleSelector.getSelectedItem().equals("Faculty")) {
-            facultyHomepageJPanel hjp = new facultyHomepageJPanel();
-               workareaContainer.add("facultyHomepageJPanel",hjp);
-               CardLayout layout = (CardLayout) workareaContainer.getLayout();
-               layout.next(workareaContainer);
-            
+            } else {
+                JOptionPane.showMessageDialog(this, "Professor does not exist! \n or Incorrect credentials! ");
+
+            }
         }
 
 
     }//GEN-LAST:event_LoginBtnActionPerformed
 
-    private void dropdownRoleSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropdownRoleSelectorActionPerformed
+    private void ddRoleSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddRoleSelectorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_dropdownRoleSelectorActionPerformed
+    }//GEN-LAST:event_ddRoleSelectorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LoginBtn;
-    private javax.swing.JComboBox<String> dropdownRoleSelector;
+    private javax.swing.JComboBox<String> ddRoleSelector;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txtNUID;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
+
+    private void validateLogin(String NUID, char[] Password) {
+        for (Student logincred : Sdirectory.getStudentDirectory()) {
+            if (logincred.getNUID().equals(NUID) && BCrypt.checkpw(String.valueOf(Password), logincred.getPassword())) {
+                JOptionPane.showMessageDialog(this, "Login Successful!");
+                HomepageJPanel hjp = new HomepageJPanel(workareaContainer);
+                workareaContainer.add("HomepageoldJPanel", hjp);
+                CardLayout layout = (CardLayout) workareaContainer.getLayout();
+                layout.next(workareaContainer);
+                break;
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Student does not exist! \n or Incorrect credentials! ");
+                break;
+            }
+        }
+
+    }
+
 }

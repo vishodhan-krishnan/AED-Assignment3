@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package faculty;
+package professor;
 
 /**
  *
  * @author visho
  */
-public class facultyHomepageJPanel extends javax.swing.JPanel {
+public class professorHomepageJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form facultyHomePageJPanel
      */
-    public facultyHomepageJPanel() {
+    public professorHomepageJPanel() {
         initComponents();
     }
 
