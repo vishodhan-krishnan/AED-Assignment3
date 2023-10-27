@@ -4,6 +4,8 @@
  */
 package userInterface;
 
+import classes.CourseCreationHistory;
+import classes.Professor;
 import classes.ProfessorDirectory;
 import classes.Student;
 import classes.StudentDirectory;
@@ -23,22 +25,29 @@ public class LoginJPanel extends javax.swing.JPanel {
     private JPanel workareaContainer;
     StudentDirectory Sdirectory;
     ProfessorDirectory Pdirectory;
+    CourseCreationHistory cch;
+    Professor prof;
+    Student s;
 
     /**
      * Creates new form SecondJPanel
      */
-    public LoginJPanel(JPanel jPanel) {
+    public LoginJPanel(JPanel jPanel, CourseCreationHistory cch, Professor prof,StudentDirectory SDirectory) {
         Sdirectory = new StudentDirectory();
-        Sdirectory.addStudent("1234561", BCrypt.hashpw("visho", BCrypt.gensalt()));
+        Sdirectory.addStudent("123456", BCrypt.hashpw("123456", BCrypt.gensalt()));
         Sdirectory.addStudent("1234562", BCrypt.hashpw("priyam", BCrypt.gensalt()));
         Sdirectory.addStudent("1234563", BCrypt.hashpw("saiyam", BCrypt.gensalt()));
 
         Pdirectory = new ProfessorDirectory();
-        Pdirectory.addProfessor("1234123", BCrypt.hashpw("profone", BCrypt.gensalt()));
-        Pdirectory.addProfessor("2345234", BCrypt.hashpw("proftwo", BCrypt.gensalt()));
-        Pdirectory.addProfessor("3456345", BCrypt.hashpw("profthree", BCrypt.gensalt()));
+        Pdirectory.addProfessor("123456", BCrypt.hashpw("123456", BCrypt.gensalt()));
+        Pdirectory.addProfessor("12345", BCrypt.hashpw("12345", BCrypt.gensalt()));
+        Pdirectory.addProfessor("123", BCrypt.hashpw("123", BCrypt.gensalt()));
+        Pdirectory.addProfessor("1234567", BCrypt.hashpw("1234567", BCrypt.gensalt()));
 
         this.workareaContainer = jPanel;
+        this.cch = cch;
+        this.prof = prof;
+//        this.Sdirectory = SDirectory;
         initComponents();
     }
 
@@ -142,7 +151,7 @@ public class LoginJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Login Successful!");
                 txtNUID.setText("");
                 txtPassword.setText("");
-                HomepageJPanel hjp = new HomepageJPanel(workareaContainer);
+                HomepageJPanel hjp = new HomepageJPanel(workareaContainer, cch, prof,Sdirectory);
                 workareaContainer.add("HomepageoldJPanel", hjp);
                 CardLayout layout = (CardLayout) workareaContainer.getLayout();
                 layout.next(workareaContainer);
@@ -150,17 +159,19 @@ public class LoginJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Student does not exist! \n or Incorrect credentials! ");
             }
         } else if (ddRoleSelector.getSelectedItem().equals("Professor")) {
-            if (Pdirectory.validateProfessorLogin(txtNUID.getText(), txtPassword.getPassword())) {
-                JOptionPane.showMessageDialog(this, "Login Successful!");
+            Professor p = Pdirectory.validateProfessorLogin(txtNUID.getText(), txtPassword.getPassword());
+            if (p == null) {
+                JOptionPane.showMessageDialog(this, "Professor does not exist! \n or Incorrect credentials! ");
                 txtNUID.setText("");
                 txtPassword.setText("");
-                professorHomepageJPanel hjp = new professorHomepageJPanel();
+            } else {
+
+                JOptionPane.showMessageDialog(this, "Login Successful!");
+
+                professorHomepageJPanel hjp = new professorHomepageJPanel(workareaContainer, cch, p);
                 workareaContainer.add("professorHomepageJPanel", hjp);
                 CardLayout layout = (CardLayout) workareaContainer.getLayout();
                 layout.next(workareaContainer);
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Professor does not exist! \n or Incorrect credentials! ");
 
             }
         }
@@ -180,7 +191,7 @@ public class LoginJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField txtNUID;
+    public javax.swing.JTextField txtNUID;
     private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 
@@ -188,7 +199,7 @@ public class LoginJPanel extends javax.swing.JPanel {
         for (Student logincred : Sdirectory.getStudentDirectory()) {
             if (logincred.getNUID().equals(NUID) && BCrypt.checkpw(String.valueOf(Password), logincred.getPassword())) {
                 JOptionPane.showMessageDialog(this, "Login Successful!");
-                HomepageJPanel hjp = new HomepageJPanel(workareaContainer);
+                HomepageJPanel hjp = new HomepageJPanel(workareaContainer, cch, prof,Sdirectory);
                 workareaContainer.add("HomepageoldJPanel", hjp);
                 CardLayout layout = (CardLayout) workareaContainer.getLayout();
                 layout.next(workareaContainer);

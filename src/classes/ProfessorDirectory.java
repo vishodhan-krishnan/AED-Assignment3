@@ -17,7 +17,7 @@ import org.mindrot.jbcrypt.BCrypt;
 public class ProfessorDirectory {
 
     private ArrayList<Professor> ProfDirectory;
-    ProfessorDirectory pd;
+    
 
     public ProfessorDirectory() {
         this.ProfDirectory = new ArrayList<>();
@@ -36,6 +36,7 @@ public class ProfessorDirectory {
     public Professor addProfessor(String profID, String password) {
         Professor p = new Professor();
         p.setProfNUID(profID);
+        p.setPassword(password);
         ProfDirectory.add(p);
         return p;
     }
@@ -51,14 +52,14 @@ public class ProfessorDirectory {
 
     
 
-    public boolean validateProfessorLogin(String NUID, char[] Password) {
+    public Professor validateProfessorLogin(String NUID, char[] Password) {
         for (Professor logincred : ProfDirectory) {
             if (logincred.getProfNUID().equals(NUID) &&
                     BCrypt.checkpw(String.valueOf(Password), (String) logincred.getPassword().toString()))
-                return true;
+                return logincred;
         }
 
-        return false;
+        return null;
 
     }
 

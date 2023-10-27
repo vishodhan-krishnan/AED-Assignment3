@@ -11,7 +11,36 @@ package classes;
 public class Professor {
     
     String profNUID;
+    String profName;
     String password;
+    int reputationIndex;
+    String Specialty;
+
+    public String getProfName() {
+        return profName;
+    }
+
+    public void setProfName(String profName) {
+        this.profName = profName;
+    }
+
+    public String getSpecialty() {
+        return Specialty;
+    }
+
+    public void setSpecialty(String Specialty) {
+        this.Specialty = Specialty;
+    }
+    
+
+    public int getReputationIndex() {
+        return reputationIndex;
+    }
+
+    public void setReputationIndex(int reputationIndex) {
+        this.reputationIndex = reputationIndex;
+    }
+    
 
     public String getProfNUID() {
         return profNUID;

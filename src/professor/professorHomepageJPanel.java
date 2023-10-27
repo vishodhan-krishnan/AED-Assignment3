@@ -4,16 +4,28 @@
  */
 package professor;
 
+import classes.CourseCreationHistory;
+import classes.Professor;
+import classes.ProfessorDirectory;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author visho
  */
 public class professorHomepageJPanel extends javax.swing.JPanel {
-
+    public JPanel workareaContainer;
+    ProfessorDirectory ProfDirectory;
+    CourseCreationHistory CourseHistory;
+    Professor prof;
     /**
      * Creates new form facultyHomePageJPanel
      */
-    public professorHomepageJPanel() {
+    public professorHomepageJPanel(JPanel workareaContainer, CourseCreationHistory cch,Professor prof) {
+        this.workareaContainer = workareaContainer;
+        this.CourseHistory = cch;
+        this.prof = prof;
         initComponents();
     }
 
@@ -26,32 +38,82 @@ public class professorHomepageJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        btnDisplayCourses = new javax.swing.JButton();
+        btnRegisterCourses = new javax.swing.JButton();
+        btnGraduate = new javax.swing.JButton();
+        btnViewTranscript = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(800, 800));
 
-        jLabel1.setText("Hello Faculty");
+        btnDisplayCourses.setText("CREATE COURSES");
+        btnDisplayCourses.setPreferredSize(new java.awt.Dimension(150, 50));
+        btnDisplayCourses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDisplayCoursesActionPerformed(evt);
+            }
+        });
+
+        btnRegisterCourses.setText("REGISTER COURSES");
+        btnRegisterCourses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterCoursesActionPerformed(evt);
+            }
+        });
+
+        btnGraduate.setText("GRADUATE");
+
+        btnViewTranscript.setText("VIEW TRANSCRIPT");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(328, 328, 328)
-                .addComponent(jLabel1)
-                .addContainerGap(403, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnViewTranscript, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDisplayCourses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(131, 131, 131)
+                .addComponent(btnRegisterCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87)
+                .addComponent(btnGraduate, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(285, 285, 285)
-                .addComponent(jLabel1)
-                .addContainerGap(499, Short.MAX_VALUE))
+                .addGap(180, 180, 180)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDisplayCourses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegisterCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGraduate, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(95, 95, 95)
+                .addComponent(btnViewTranscript, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(425, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnDisplayCoursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisplayCoursesActionPerformed
+        // TODO add your handling code here:
+        CourseCreationJPanel panel = new CourseCreationJPanel( workareaContainer, ProfDirectory, CourseHistory, prof );
+        workareaContainer.add("DisplayCoursesJPanel",panel);
+        CardLayout layout = (CardLayout) workareaContainer.getLayout();
+        layout.next(workareaContainer);
+    }//GEN-LAST:event_btnDisplayCoursesActionPerformed
+
+    private void btnRegisterCoursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterCoursesActionPerformed
+        // TODO add your handling code here:
+//        RegisterCoursesJPanel panel = new RegisterCoursesJPanel(workareaContainer,cch);
+//        workareaContainer.add("RegisterCoursesJPanel",panel);
+//        CardLayout layout = (CardLayout) workareaContainer.getLayout();
+//        layout.next(workareaContainer);
+    }//GEN-LAST:event_btnRegisterCoursesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnDisplayCourses;
+    private javax.swing.JButton btnGraduate;
+    private javax.swing.JButton btnRegisterCourses;
+    private javax.swing.JButton btnViewTranscript;
     // End of variables declaration//GEN-END:variables
 }

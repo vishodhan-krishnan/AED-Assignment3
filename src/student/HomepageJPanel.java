@@ -4,6 +4,9 @@
  */
 package student;
 
+import classes.CourseCreationHistory;
+import classes.Professor;
+import classes.StudentDirectory;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import userInterface.LoginJPanel;
@@ -15,12 +18,19 @@ import userInterface.LoginJPanel;
 public class HomepageJPanel extends javax.swing.JPanel {
 
     public JPanel workareaContainer;
+    CourseCreationHistory cch;
+    Professor prof;
+    StudentDirectory studentdir;
 
     /**
      * Creates new form studentHomepageJPanel
      */
-    public HomepageJPanel(JPanel jPanel) {
+    public HomepageJPanel(JPanel jPanel,CourseCreationHistory cch,Professor prof,StudentDirectory studentdir) {
         this.workareaContainer = jPanel;
+        this.cch = cch;
+        this.prof=prof;
+        this.studentdir = studentdir;
+        
         initComponents();
     }
 
@@ -105,7 +115,7 @@ public class HomepageJPanel extends javax.swing.JPanel {
 
     private void btnDisplayCoursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisplayCoursesActionPerformed
         // TODO add your handling code here:
-        DisplayCoursesJPanel panel = new DisplayCoursesJPanel(workareaContainer);
+        DisplayCoursesJPanel panel = new DisplayCoursesJPanel(workareaContainer,studentdir);
         workareaContainer.add("DisplayCoursesJPanel",panel);
         CardLayout layout = (CardLayout) workareaContainer.getLayout();
         layout.next(workareaContainer);
@@ -113,7 +123,7 @@ public class HomepageJPanel extends javax.swing.JPanel {
 
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
         // TODO add your handling code here:
-        LoginJPanel ljp = new LoginJPanel(workareaContainer);
+        LoginJPanel ljp = new LoginJPanel(workareaContainer,cch,prof,studentdir);
         workareaContainer.add("LoginJPanel", ljp);
         CardLayout layout = (CardLayout) workareaContainer.getLayout();
         layout.previous(workareaContainer);
@@ -122,7 +132,7 @@ public class HomepageJPanel extends javax.swing.JPanel {
 
     private void btnRegisterCoursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterCoursesActionPerformed
         // TODO add your handling code here:
-        RegisterCoursesJPanel panel = new RegisterCoursesJPanel(workareaContainer);
+        RegisterCoursesJPanel panel = new RegisterCoursesJPanel(workareaContainer,cch,studentdir);
         workareaContainer.add("RegisterCoursesJPanel",panel);
         CardLayout layout = (CardLayout) workareaContainer.getLayout();
         layout.next(workareaContainer);

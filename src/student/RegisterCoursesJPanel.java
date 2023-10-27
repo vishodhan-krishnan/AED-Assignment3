@@ -6,9 +6,14 @@ package student;
 
 import classes.CourseCreationHistory;
 import classes.CourseCreation;
+import classes.Student;
+import classes.StudentDirectory;
 import java.awt.CardLayout;
+
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import userInterface.LoginJPanel;
 
 /**
  *
@@ -18,19 +23,20 @@ public class RegisterCoursesJPanel extends javax.swing.JPanel {
 
     JPanel workareaContainer;
     CourseCreationHistory cc;
-
+    StudentDirectory studentdir;
+    
+    
+    
+    
     /**
      * Creates new form RegisterJPanel
      */
-    public RegisterCoursesJPanel(JPanel jPanel) {
-        this.workareaContainer = jPanel;
-        this.cc = new CourseCreationHistory();
-        cc.addCourseOffered("AED", "101", "fall", "Tom Cruise", "Tuesday", "Thursday",
-                "12-3PM", "4-7PM");
-//        cc.addCourseOffered("Fall", "Tom Cruise", "Monday", "Wednesday", "12-3PM",
-//                "Application Engineering and Design", "INFO5100");
-//        cc.addCourseOffered("Fall", "Hugh Jackman", "Wednesday","Thursday", "3-6PM",
-//                "Data Science Engineering Methodology and Tools", "INFO6210");
+    public RegisterCoursesJPanel(JPanel workareaContainer, CourseCreationHistory cc,StudentDirectory studentdir) {
+        this.workareaContainer = workareaContainer;
+        this.cc = cc;
+        this.studentdir= studentdir;
+        
+
         initComponents();
 
     }
@@ -51,6 +57,7 @@ public class RegisterCoursesJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         comboTermSelect = new javax.swing.JComboBox<>();
         btnBack = new javax.swing.JButton();
+        btnRegister = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(801, 600));
 
@@ -62,20 +69,20 @@ public class RegisterCoursesJPanel extends javax.swing.JPanel {
 
         tablenewCourseDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Course ID", "Course Name", "Professor Name", "Reputation Index"
+                "Name", "Credits", "Location", "Prof Name", "Prof RI"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -111,25 +118,39 @@ public class RegisterCoursesJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnRegister.setText("REGISTER");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(52, 52, 52)
-                        .addComponent(comboTermSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnViewDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(200, 200, 200)
                 .addComponent(jLabel1)
                 .addGap(291, 291, 291))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(52, 52, 52)
+                                .addComponent(comboTermSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnViewDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(171, 171, 171)
+                        .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,11 +161,13 @@ public class RegisterCoursesJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(comboTermSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
+                .addGap(56, 56, 56)
                 .addComponent(btnViewDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -166,9 +189,33 @@ public class RegisterCoursesJPanel extends javax.swing.JPanel {
         populateTable();
     }//GEN-LAST:event_btnViewDetailsActionPerformed
 
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tablenewCourseDetails.getSelectedRow();
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a course to register.");
+            return;
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) tablenewCourseDetails.getModel();
+        CourseCreation selectedCourse = (CourseCreation) model.getValueAt(selectedRowIndex, 0);
+        Student student = new Student();
+        
+       
+            
+        
+            
+        student.setSelectedCourse(selectedCourse);
+
+//        cc.registerCourse(selectedcourse);
+//        displayTable();
+    }//GEN-LAST:event_btnRegisterActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnViewDetails;
     private javax.swing.JComboBox<String> comboTermSelect;
     private javax.swing.JLabel jLabel1;
@@ -180,16 +227,16 @@ public class RegisterCoursesJPanel extends javax.swing.JPanel {
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) tablenewCourseDetails.getModel();
         model.setRowCount(0);
-        for (CourseCreation cc : cc.getCourseHistory()) {
-            if (cc.getTerm().equals("fall")) {
-                Object[] row = new Object[4];
-                row[0] = cc.getCourseID();
-                row[1] = cc.getCourseName();
-                
-//               
+        for (CourseCreation courseinfo : cc.getCourseHistory()) {
+            Object[] row = new Object[6];
+            row[0] = courseinfo;
+//            row[1] = courseinfo.getCourseName();
+            row[1] = 4; //credits
+            row[2] = courseinfo.getCourseRegion();
+            row[3] = courseinfo.getProf().getProfNUID();
+            row[4] = courseinfo.getProf().getReputationIndex();
 
-                model.addRow(row);
-            }
+            model.addRow(row);
         }
 
     }

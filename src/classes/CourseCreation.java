@@ -9,23 +9,39 @@ package classes;
  * @author Saiyam Doshi
  */
 public class CourseCreation {
-    String term;
-    String CourseID;
-    String CourseName;
-    String CourseDetails;
-    String CourseStartDate;
-    String CourseEndDate;
-    String CourseDay1;
-    String CourseDay1Time;
-    String CourseDay2;
-    String CourseDay2Time;
 
-    public String getCourseID() {
-        return CourseID;
+    private String term;
+    private String CourseName;
+    private String CourseCredits;
+    private String CourseRegion;
+    private String CourseDetails;
+    private String CourseStartDate, CourseEndDate;
+    private String CourseDay1, CourseDay1Time, CourseDay2, CourseDay2Time;
+    Professor prof;
+    private boolean assessmentType = false; //false if project; True if Exam
+
+    public Professor getProf() {
+        return prof;
     }
 
-    public void setCourseID(String CourseID) {
-        this.CourseID = CourseID;
+    public void setProf(Professor prof) {
+        this.prof = prof;
+    }
+
+    public String getCourseCredits() {
+        return CourseCredits;
+    }
+
+    public void setCourseCredits(String CourseCredits) {
+        this.CourseCredits = CourseCredits;
+    }
+
+    public String getCourseRegion() {
+        return CourseRegion;
+    }
+
+    public void setCourseRegion(String CourseRegion) {
+        this.CourseRegion = CourseRegion;
     }
 
     public String getTerm() {
@@ -84,4 +100,9 @@ public class CourseCreation {
         this.CourseDay2Time = CourseDay2Time;
     }
     
+     @Override
+    public String toString(){
+        return CourseName;
+    }
+
 }

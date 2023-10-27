@@ -4,14 +4,35 @@
  */
 package classes;
 
+import java.util.ArrayList;
+
+
+
 /**
  *
  * @author visho
  */
 public class Student {
+
     String NUID;
     String password;
+    CourseCreation selectedCourse;
+    ArrayList selectedCourses;
 
+    public Student() {
+        this.selectedCourse = new CourseCreation();
+        
+    }
+
+    public CourseCreation getSelectedCourse() {
+        return selectedCourse;
+    }
+
+    public void setSelectedCourse(CourseCreation selectedCourse) {
+        this.selectedCourse = selectedCourse;
+    }
+
+    
     public String getNUID() {
         return NUID;
     }
@@ -27,9 +48,5 @@ public class Student {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    
-    
-           
-    
+
 }

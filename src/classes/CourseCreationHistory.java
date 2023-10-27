@@ -13,11 +13,9 @@ import java.util.ArrayList;
 public class CourseCreationHistory {
 
     private ArrayList<CourseCreation> CourseHistory;
-    private ArrayList<CourseCreation> courseOffered;
 
     public CourseCreationHistory() {
         this.CourseHistory = new ArrayList<>();
-        this.courseOffered = new ArrayList<>();
 
     }
 
@@ -35,19 +33,6 @@ public class CourseCreationHistory {
         return course;
     }
 
-    public CourseCreation addCourseOffered(String coName, String coID, String term, String pName, String coDay1, String coDay2, String time1, String time2) {
-        CourseCreation newcourse = new CourseCreation();
-        newcourse.setTerm(term);
-        newcourse.setCourseID(coID);
-        newcourse.setCourseDay1(coDay1);
-        newcourse.setCourseDay1Time(time1);
-        newcourse.setCourseDay2(coDay2);
-        newcourse.setCourseDay2Time(time2);
-        newcourse.setCourseName(coName);
-        newcourse.setCourseDetails(coDay2);
-
-        courseOffered.add(newcourse);
-        return newcourse;
-    }
+   
 
 }
