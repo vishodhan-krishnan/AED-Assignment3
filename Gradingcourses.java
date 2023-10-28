@@ -249,7 +249,7 @@ String searchQuery = txtSearch.getText();
                     course.setGrade(updatedGrade);
                     courseFound = true;
                     break;
-                }
+                } 
             }
 
             if (courseFound) {
@@ -289,8 +289,8 @@ String searchQuery = txtSearch.getText();
     for (StudentDetails student : students) {
         for (Course course : student.getCourses()) {
             Object[] row = new Object[4];
-            row[0] = student.getStudentID();
-            row[1] = student.getFullName();
+            row[0] = student.getUserid();
+            row[1] = student.getName();
             row[2] = course.getCourseName();
             row[3] = course.getGrade();
             dtm.addRow(row);
