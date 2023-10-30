@@ -4,6 +4,7 @@
  */
 package professor;
 
+import classes.GradeCoursesJPanel;
 import classes.CourseCreationHistory;
 import classes.Professor;
 import classes.StudentDirectory;

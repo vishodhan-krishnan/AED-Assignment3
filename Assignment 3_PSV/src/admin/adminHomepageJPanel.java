@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author visho
+ * @author pchok
  */
 public class adminHomepageJPanel extends javax.swing.JPanel {
 private JPanel workareaContainer;

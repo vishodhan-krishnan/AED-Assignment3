@@ -55,6 +55,7 @@ public class CreateProfessorLogin extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 222, 180));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setForeground(new java.awt.Color(0, 0, 0));
+        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jLabel1.setBackground(new java.awt.Color(153, 153, 153));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
