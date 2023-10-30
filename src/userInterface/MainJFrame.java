@@ -46,7 +46,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         btnJPanel = new javax.swing.JPanel();
-        btnStudentLogin = new javax.swing.JButton();
+        btnWelcome = new javax.swing.JButton();
         workAreaContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,13 +61,13 @@ public class MainJFrame extends javax.swing.JFrame {
         btnJPanel.setMinimumSize(new java.awt.Dimension(100, 100));
         btnJPanel.setPreferredSize(new java.awt.Dimension(1000, 200));
 
-        btnStudentLogin.setText("WELCOME");
-        btnStudentLogin.setMaximumSize(new java.awt.Dimension(100, 25));
-        btnStudentLogin.setMinimumSize(new java.awt.Dimension(100, 25));
-        btnStudentLogin.setPreferredSize(new java.awt.Dimension(150, 50));
-        btnStudentLogin.addActionListener(new java.awt.event.ActionListener() {
+        btnWelcome.setText("WELCOME");
+        btnWelcome.setMaximumSize(new java.awt.Dimension(100, 25));
+        btnWelcome.setMinimumSize(new java.awt.Dimension(100, 25));
+        btnWelcome.setPreferredSize(new java.awt.Dimension(150, 50));
+        btnWelcome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStudentLoginActionPerformed(evt);
+                btnWelcomeActionPerformed(evt);
             }
         });
 
@@ -77,14 +77,14 @@ public class MainJFrame extends javax.swing.JFrame {
             btnJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnJPanelLayout.createSequentialGroup()
                 .addContainerGap(798, Short.MAX_VALUE)
-                .addComponent(btnStudentLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
         );
         btnJPanelLayout.setVerticalGroup(
             btnJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnJPanelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(btnStudentLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -114,12 +114,12 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnStudentLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentLoginActionPerformed
+    private void btnWelcomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWelcomeActionPerformed
         LoginJPanel panel = new LoginJPanel(workAreaContainer,cch,prof,studentdetails);
         workAreaContainer.add("LoginJPanel",panel);
         CardLayout layout = (CardLayout) workAreaContainer.getLayout();
         layout.next(workAreaContainer);
-    }//GEN-LAST:event_btnStudentLoginActionPerformed
+    }//GEN-LAST:event_btnWelcomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,7 +158,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnJPanel;
-    private javax.swing.JButton btnStudentLogin;
+    public javax.swing.JButton btnWelcome;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JPanel workAreaContainer;
     // End of variables declaration//GEN-END:variables

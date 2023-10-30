@@ -7,12 +7,9 @@ package student;
 import classes.CourseCreation;
 import classes.CourseCreationHistory;
 import classes.Student;
-import classes.StudentDirectory;
-import classes.ProfessorDirectory;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -31,8 +28,6 @@ public class StudentTranscriptJPanel extends javax.swing.JPanel {
 
     Student student;
     CourseCreationHistory courseCreationHistory;
-    StudentDirectory studentDirectory;
-    ProfessorDirectory professorDirectory;
     JPanel CardSequencePanel;
     
      String student_id=null;
@@ -46,7 +41,7 @@ public class StudentTranscriptJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    public StudentTranscriptJPanel( Student student, CourseCreationHistory courseCreationHistory, JPanel CardSequencePanel) {
+    public StudentTranscriptJPanel( JPanel CardSequencePanel,CourseCreationHistory courseCreationHistory, Student student ) {
          initComponents();
         this.student = student;
         this.courseCreationHistory = courseCreationHistory;
@@ -245,7 +240,7 @@ public class StudentTranscriptJPanel extends javax.swing.JPanel {
             document.close();
             System.out.println("PDF saved to student_transcript.pdf");
         } catch (IOException ex) {
-            Logger.getLogger(StudentTranscriptJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
         }
 
 

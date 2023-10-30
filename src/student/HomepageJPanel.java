@@ -72,6 +72,11 @@ public class HomepageJPanel extends javax.swing.JPanel {
         btnGraduate.setText("GRADUATE");
 
         btnViewTranscript.setText("VIEW TRANSCRIPT");
+        btnViewTranscript.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewTranscriptActionPerformed(evt);
+            }
+        });
 
         btnLogOut.setText("LOG OUT");
         btnLogOut.addActionListener(new java.awt.event.ActionListener() {
@@ -140,6 +145,14 @@ public class HomepageJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) workareaContainer.getLayout();
         layout.next(workareaContainer);
     }//GEN-LAST:event_btnRegisterCoursesActionPerformed
+
+    private void btnViewTranscriptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewTranscriptActionPerformed
+        // TODO add your handling code here:
+        StudentTranscriptJPanel panel = new StudentTranscriptJPanel(workareaContainer,cch,studentdetails);
+        workareaContainer.add("RegisterCoursesJPanel",panel);
+        CardLayout layout = (CardLayout) workareaContainer.getLayout();
+        layout.next(workareaContainer);
+    }//GEN-LAST:event_btnViewTranscriptActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

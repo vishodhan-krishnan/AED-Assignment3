@@ -10,8 +10,6 @@ import classes.StudentDirectory;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -27,7 +25,6 @@ public class DisplayCoursesJPanel extends javax.swing.JPanel {
     Student studentdetails;
     HashMap map;
     ArrayList<CourseCreation> ccList;
-    ProfFeedbackJPanel feedbackJPanel;
     ArrayList<String> completedcourseList;
 
     /**
@@ -40,7 +37,6 @@ public class DisplayCoursesJPanel extends javax.swing.JPanel {
         initComponents();
         btnMarkCourseCompleted.setEnabled(false);
         btnRateProfessor.setEnabled(false);
-        btnUpdateRI.setVisible(false);
     }
 
     /**
@@ -59,7 +55,6 @@ public class DisplayCoursesJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         btnDisplayCourses = new javax.swing.JButton();
         btnMarkCourseCompleted = new javax.swing.JButton();
-        btnUpdateRI = new javax.swing.JButton();
 
         btnRateProfessor.setText("RATE PROFESSOR");
         btnRateProfessor.setPreferredSize(new java.awt.Dimension(150, 50));
@@ -123,13 +118,6 @@ public class DisplayCoursesJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnUpdateRI.setText("UPDATE");
-        btnUpdateRI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateRIActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -141,9 +129,7 @@ public class DisplayCoursesJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(btnUpdateRI, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
+                        .addGap(204, 204, 204)
                         .addComponent(btnRateProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addComponent(btnMarkCourseCompleted, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -169,8 +155,7 @@ public class DisplayCoursesJPanel extends javax.swing.JPanel {
                     .addComponent(btnMarkCourseCompleted, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnRateProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnDisplayCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnUpdateRI, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnDisplayCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(134, 134, 134)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(116, 116, 116))
@@ -211,22 +196,11 @@ public class DisplayCoursesJPanel extends javax.swing.JPanel {
 
     private void btnRateProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRateProfessorActionPerformed
         // TODO add your handling code here:
-//        ProfFeedbackJPanel panel = new ProfFeedbackJPanel();
-//        workareaContainer.add("ProfRIJPanel", panel);
-//        CardLayout layout = (CardLayout) workareaContainer.getLayout();
-//        layout.next(workareaContainer);
-        DefaultTableModel model = (DefaultTableModel) tableCourseDetails.getModel();
-        tableCourseDetails.removeColumn(tableCourseDetails.getColumn("Day 1"));
-        tableCourseDetails.removeColumn(tableCourseDetails.getColumn("Course Name"));
-        tableCourseDetails.removeColumn(tableCourseDetails.getColumn("Day 1 Time"));
-        tableCourseDetails.removeColumn(tableCourseDetails.getColumn("Day 2"));
-        tableCourseDetails.removeColumn(tableCourseDetails.getColumn("Day 2 Time"));
+        ProfFeedbackJPanel panel = new ProfFeedbackJPanel(workareaContainer,studentdetails);
+        workareaContainer.add("ProfRIJPanel", panel);
+        CardLayout layout = (CardLayout) workareaContainer.getLayout();
+        layout.next(workareaContainer);
 
-        tableCourseDetails.getColumnModel().getColumn(1).setHeaderValue("Reputation Index");
-        tableCourseDetails.setEditingColumn(1);
-        
-
-        btnUpdateRI.setVisible(true);
 
 
     }//GEN-LAST:event_btnRateProfessorActionPerformed
@@ -254,29 +228,12 @@ public class DisplayCoursesJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnMarkCourseCompletedActionPerformed
 
-    private void btnUpdateRIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateRIActionPerformed
-        // TODO add your handling code here:
-        Set<CourseCreation> ccSet = new HashSet<>(ccList);
-        ccSet.forEach(cc -> {
-            Object[] row = new Object[2];
-            row[0] = cc.getProf().getProfName();
-            
-            if (Integer.parseInt( row[1].toString()) < 0 || Integer.parseInt(row[1].toString()) > 5) {
-                JOptionPane.showMessageDialog(this, "Invalid rating!", "Warning", JOptionPane.WARNING_MESSAGE);
-            } else {
-                cc.getProf().setReputationIndex(Integer.parseInt((String) row[1]));
-            }
-        });
-        
-    }//GEN-LAST:event_btnUpdateRIActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDisplayCourses;
     private javax.swing.JButton btnMarkCourseCompleted;
     private javax.swing.JButton btnRateProfessor;
-    private javax.swing.JButton btnUpdateRI;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tableCourseDetails;

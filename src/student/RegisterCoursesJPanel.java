@@ -24,7 +24,6 @@ public class RegisterCoursesJPanel extends javax.swing.JPanel {
     JPanel workareaContainer;
     CourseCreationHistory cc;
     StudentDirectory studentdir;
-    HashMap<String, CourseCreation> courseloadlist;
     Student studentdetails;
     
     

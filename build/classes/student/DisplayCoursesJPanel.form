@@ -21,17 +21,16 @@
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="389" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
-              <Component id="btnRateProfessor" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-              <Component id="btnMarkCourseCompleted" min="-2" pref="150" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="btnDisplayCourses" min="-2" pref="151" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="189" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
+                      <Component id="btnRateProfessor" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="btnMarkCourseCompleted" min="-2" pref="150" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="btnDisplayCourses" min="-2" pref="151" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" pref="636" max="-2" attributes="0"/>
@@ -41,7 +40,7 @@
                       <Component id="btnBack" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="145" pref="157" max="32767" attributes="0"/>
+              <EmptySpace pref="163" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -53,10 +52,12 @@
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="300" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnRateProfessor" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnDisplayCourses" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnMarkCourseCompleted" alignment="0" min="-2" pref="51" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnRateProfessor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnDisplayCourses" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
               <Component id="btnBack" min="-2" max="-2" attributes="0"/>
@@ -92,33 +93,18 @@
         <Component class="javax.swing.JTable" name="tableCourseDetails">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="8" rowCount="8">
-                <Column editable="false" title="Course Name" type="java.lang.Object"/>
-                <Column editable="false" title="Professor Name" type="java.lang.Object"/>
-                <Column editable="true" title="Day 1 " type="java.lang.Object"/>
-                <Column editable="true" title="Day 1 Time" type="java.lang.Object"/>
-                <Column editable="true" title="Day 2" type="java.lang.Object"/>
-                <Column editable="true" title="Day 2 Time" type="java.lang.Object"/>
-                <Column editable="true" title="Credits" type="java.lang.Object"/>
-                <Column editable="true" title="Course Completed" type="java.lang.Boolean">
-                  <Data value="false"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                </Column>
+              <Table columnCount="7" rowCount="8">
+                <Column editable="true" title="Course Name" type="java.lang.String"/>
+                <Column editable="true" title="Professor Name" type="java.lang.String"/>
+                <Column editable="true" title="Day 1" type="java.lang.String"/>
+                <Column editable="true" title="Day 1 Time" type="java.lang.String"/>
+                <Column editable="true" title="Day 2" type="java.lang.String"/>
+                <Column editable="true" title="Day 2 Time" type="java.lang.String"/>
+                <Column editable="true" title="Credits" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -198,6 +184,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;MARK COURSES  &lt;br&gt;AS COMPLETE&lt;/html&gt;"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMarkCourseCompletedActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

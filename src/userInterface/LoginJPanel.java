@@ -159,7 +159,7 @@ public class LoginJPanel extends javax.swing.JPanel {
                 txtNUID.setText("");
                 txtPassword.setText("");
                 HomepageJPanel hjp = new HomepageJPanel(workareaContainer, cch, prof, studentdetails, studentDir);
-                workareaContainer.add("HomepageoldJPanel", hjp);
+                workareaContainer.add("HomepageJPanel", hjp);
                 CardLayout layout = (CardLayout) workareaContainer.getLayout();
                 layout.next(workareaContainer);
             }
