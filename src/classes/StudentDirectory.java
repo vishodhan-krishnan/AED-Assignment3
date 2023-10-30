@@ -30,17 +30,20 @@ public class StudentDirectory {
         this.StudentDirectory = StudentDirectory;
     }
 
-    public Student addStudent(String NUID, String password) {
+    public Student addStudent(String NUID,String Name,String password, String EmailID, String PhoneNo) {
         Student s = new Student();
-        s.setNUID(NUID);
-        s.setPassword(password);
+        s.setStudentName(Name);
+        s.setStudentNUID(NUID);
+        s.setStudentPassword(password);
+        s.setStudentEmailID(EmailID);
+        s.setStudentPhoneNo(PhoneNo);
         StudentDirectory.add(s);
         return s;
     }
 
     public Student searchStudent(String nuid) {
         for (Student s : StudentDirectory) {
-            if (s.getNUID().equals(nuid)) {
+            if (s.getStudentNUID().equals(nuid)) {
                 return s;
             }
         }
@@ -51,14 +54,16 @@ public class StudentDirectory {
         StudentDirectory.remove(s);
     }
 
-    public boolean validateStudentLogin(String NUID, char[] Password) {
+    public Student validateStudentLogin(String NUID, char[] Password) {
         for (Student logincred : StudentDirectory) {
-            if (logincred.getNUID().equals(NUID) && BCrypt.checkpw(String.valueOf(Password), logincred.getPassword()))
-                return true;
+            if (logincred.getStudentNUID().equals(NUID) && BCrypt.checkpw(String.valueOf(Password), logincred.getStudentPassword()))
+                return logincred;
         }
 
-        return false;
+        return null;
 
     }
+    
+   
 
 }

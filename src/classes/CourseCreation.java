@@ -18,8 +18,18 @@ public class CourseCreation {
     private String CourseStartDate, CourseEndDate;
     private String CourseDay1, CourseDay1Time, CourseDay2, CourseDay2Time;
     Professor prof;
+    private String grades;
     private boolean assessmentType = false; //false if project; True if Exam
 
+    public String getGrades() {
+        return grades;
+    }
+
+    public void setGrades(String grades) {
+        this.grades = grades;
+    }
+
+    
     public Professor getProf() {
         return prof;
     }

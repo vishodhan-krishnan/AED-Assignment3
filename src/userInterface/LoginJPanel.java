@@ -4,6 +4,7 @@
  */
 package userInterface;
 
+import admin.adminHomepageJPanel;
 import classes.CourseCreationHistory;
 import classes.Professor;
 import classes.ProfessorDirectory;
@@ -23,31 +24,30 @@ import student.HomepageJPanel;
 public class LoginJPanel extends javax.swing.JPanel {
 
     private JPanel workareaContainer;
-    StudentDirectory Sdirectory;
+    StudentDirectory studentDir;
     ProfessorDirectory Pdirectory;
     CourseCreationHistory cch;
     Professor prof;
-    Student s;
+    Student studentdetails;
 
     /**
      * Creates new form SecondJPanel
      */
-    public LoginJPanel(JPanel jPanel, CourseCreationHistory cch, Professor prof,StudentDirectory SDirectory) {
-        Sdirectory = new StudentDirectory();
-        Sdirectory.addStudent("123456", BCrypt.hashpw("123456", BCrypt.gensalt()));
-        Sdirectory.addStudent("1234562", BCrypt.hashpw("priyam", BCrypt.gensalt()));
-        Sdirectory.addStudent("1234563", BCrypt.hashpw("saiyam", BCrypt.gensalt()));
+    public LoginJPanel(JPanel jPanel, CourseCreationHistory cch, Professor prof, Student studentdetails) {
+        studentDir = new StudentDirectory();
+        studentDir.addStudent("123456", "Student1", BCrypt.hashpw("123456", BCrypt.gensalt()), "stud1@neu.edu", "1234512345");
+        studentDir.addStudent("123", "Student2", BCrypt.hashpw("123", BCrypt.gensalt()), "stud2@neu.edu", "123123123");
+        studentDir.addStudent("1234", "Student3", BCrypt.hashpw("1234", BCrypt.gensalt()), "stud3@neu.edu", "1111122222");
 
         Pdirectory = new ProfessorDirectory();
-        Pdirectory.addProfessor("123456", BCrypt.hashpw("123456", BCrypt.gensalt()));
+        Pdirectory.addProfessor("1234", BCrypt.hashpw("1234", BCrypt.gensalt()));
         Pdirectory.addProfessor("12345", BCrypt.hashpw("12345", BCrypt.gensalt()));
         Pdirectory.addProfessor("123", BCrypt.hashpw("123", BCrypt.gensalt()));
-        Pdirectory.addProfessor("1234567", BCrypt.hashpw("1234567", BCrypt.gensalt()));
 
         this.workareaContainer = jPanel;
         this.cch = cch;
         this.prof = prof;
-//        this.Sdirectory = SDirectory;
+        this.studentdetails = studentdetails;
         initComponents();
     }
 
@@ -147,33 +147,45 @@ public class LoginJPanel extends javax.swing.JPanel {
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
         // TODO add your handling code here:
         if (ddRoleSelector.getSelectedItem().equals("Student")) {
-            if (Sdirectory.validateStudentLogin(txtNUID.getText(), txtPassword.getPassword())) {
+            studentdetails = studentDir.validateStudentLogin(txtNUID.getText(), txtPassword.getPassword());
+            if (studentdetails == null) {
+                JOptionPane.showMessageDialog(this, "Student does not exist! \n or Incorrect credentials! ");
+                txtNUID.setText("");
+                txtPassword.setText("");
+            } else {
+
                 JOptionPane.showMessageDialog(this, "Login Successful!");
                 txtNUID.setText("");
                 txtPassword.setText("");
-                HomepageJPanel hjp = new HomepageJPanel(workareaContainer, cch, prof,Sdirectory);
+                HomepageJPanel hjp = new HomepageJPanel(workareaContainer, cch, prof, studentdetails, studentDir);
                 workareaContainer.add("HomepageoldJPanel", hjp);
                 CardLayout layout = (CardLayout) workareaContainer.getLayout();
                 layout.next(workareaContainer);
-            } else {
-                JOptionPane.showMessageDialog(this, "Student does not exist! \n or Incorrect credentials! ");
             }
         } else if (ddRoleSelector.getSelectedItem().equals("Professor")) {
-            Professor p = Pdirectory.validateProfessorLogin(txtNUID.getText(), txtPassword.getPassword());
-            if (p == null) {
+            prof = Pdirectory.validateProfessorLogin(txtNUID.getText(), txtPassword.getPassword());
+            if (prof == null) {
                 JOptionPane.showMessageDialog(this, "Professor does not exist! \n or Incorrect credentials! ");
                 txtNUID.setText("");
                 txtPassword.setText("");
             } else {
-
                 JOptionPane.showMessageDialog(this, "Login Successful!");
-
-                professorHomepageJPanel hjp = new professorHomepageJPanel(workareaContainer, cch, p);
+                professorHomepageJPanel hjp = new professorHomepageJPanel(workareaContainer, studentDir, cch, prof);
                 workareaContainer.add("professorHomepageJPanel", hjp);
                 CardLayout layout = (CardLayout) workareaContainer.getLayout();
                 layout.next(workareaContainer);
 
             }
+        } else if (ddRoleSelector.getSelectedItem().equals("Admin")) {
+            if (txtNUID.getText().equals("admin") && (String.valueOf(txtPassword.getPassword())).equals("admin")) {
+                adminHomepageJPanel hjp = new adminHomepageJPanel(workareaContainer, studentDir, Pdirectory);
+                workareaContainer.add("adminHomepageJPanel", hjp);
+                CardLayout layout = (CardLayout) workareaContainer.getLayout();
+                layout.next(workareaContainer);
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid Credentials!");
+            }
+
         }
 
 
@@ -194,23 +206,5 @@ public class LoginJPanel extends javax.swing.JPanel {
     public javax.swing.JTextField txtNUID;
     private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
-
-    private void validateLogin(String NUID, char[] Password) {
-        for (Student logincred : Sdirectory.getStudentDirectory()) {
-            if (logincred.getNUID().equals(NUID) && BCrypt.checkpw(String.valueOf(Password), logincred.getPassword())) {
-                JOptionPane.showMessageDialog(this, "Login Successful!");
-                HomepageJPanel hjp = new HomepageJPanel(workareaContainer, cch, prof,Sdirectory);
-                workareaContainer.add("HomepageoldJPanel", hjp);
-                CardLayout layout = (CardLayout) workareaContainer.getLayout();
-                layout.next(workareaContainer);
-                break;
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Student does not exist! \n or Incorrect credentials! ");
-                break;
-            }
-        }
-
-    }
 
 }

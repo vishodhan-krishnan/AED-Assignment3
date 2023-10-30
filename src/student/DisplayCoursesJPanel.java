@@ -4,9 +4,12 @@
  */
 package student;
 
+import classes.CourseCreation;
 import classes.Student;
 import classes.StudentDirectory;
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,15 +18,18 @@ import javax.swing.table.DefaultTableModel;
  * @author visho
  */
 public class DisplayCoursesJPanel extends javax.swing.JPanel {
+
     public JPanel workareaContainer;
     StudentDirectory studentdir;
-    
+    Student studentdetails;
+
     /**
      * Creates new form displayCoursesJPanel
      */
-    public DisplayCoursesJPanel(JPanel jPanel, StudentDirectory studentdir) {
+    public DisplayCoursesJPanel(JPanel jPanel, Student studentdetails, StudentDirectory studentdir) {
         this.workareaContainer = jPanel;
         this.studentdir = studentdir;
+        this.studentdetails = studentdetails;
         initComponents();
     }
 
@@ -41,7 +47,7 @@ public class DisplayCoursesJPanel extends javax.swing.JPanel {
         tableCourseDetails = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnDisplayCourses = new javax.swing.JButton();
 
         btnRateProfessor.setText("RATE PROFESSOR");
         btnRateProfessor.setPreferredSize(new java.awt.Dimension(150, 50));
@@ -50,24 +56,24 @@ public class DisplayCoursesJPanel extends javax.swing.JPanel {
 
         tableCourseDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Course Name", "Professor Name", "Course Completed"
+                "Course Name", "Professor Name", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Course Completed"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true
+                false, false, true, true, true, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -93,10 +99,10 @@ public class DisplayCoursesJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("VIEW");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnDisplayCourses.setText("VIEW");
+        btnDisplayCourses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnDisplayCoursesActionPerformed(evt);
             }
         });
 
@@ -114,7 +120,7 @@ public class DisplayCoursesJPanel extends javax.swing.JPanel {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRateProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnDisplayCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -127,7 +133,7 @@ public class DisplayCoursesJPanel extends javax.swing.JPanel {
                 .addGap(50, 50, 50)
                 .addComponent(btnRateProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDisplayCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(116, 116, 116))
@@ -141,27 +147,32 @@ public class DisplayCoursesJPanel extends javax.swing.JPanel {
         layout.previous(workareaContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnDisplayCoursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisplayCoursesActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) tableCourseDetails.getModel();
         model.setRowCount(0);
-        for (Student studentinfo : studentdir.getStudentDirectory()) {
-            Object[] row = new Object[5];
-            row[0] = studentinfo.getSelectedCourse().getCourseName();
-            row[1] = studentinfo.getSelectedCourse().getProf().getProfNUID();
-//            row[3] = courseinfo.getProf().getProfNUID();
-//            row[4] = courseinfo.getProf().getReputationIndex();
-            
+        HashMap map = studentdetails.getMapStudenttoCourse();
+        //studentdetails will contain only logincred of the current student logged in
+        ArrayList<CourseCreation> ccList = (ArrayList) map.get(studentdetails.getStudentNUID());
+        for (CourseCreation cc : ccList) {
+            Object[] row = new Object[10];
+            row[0] = cc;
+            row[1] = cc.getCourseName();
+            row[2] = cc.getProf().getProfNUID();
+            row[3] = cc.getCourseDay1();
+            row[4] = cc.getCourseDay2();
             model.addRow(row);
+
         }
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+
+
+    }//GEN-LAST:event_btnDisplayCoursesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnDisplayCourses;
     private javax.swing.JButton btnRateProfessor;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tableCourseDetails;

@@ -9,6 +9,7 @@ import classes.CourseCreation;
 import classes.Student;
 import classes.StudentDirectory;
 import java.awt.CardLayout;
+import java.util.HashMap;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -23,19 +24,20 @@ public class RegisterCoursesJPanel extends javax.swing.JPanel {
     JPanel workareaContainer;
     CourseCreationHistory cc;
     StudentDirectory studentdir;
+    HashMap<String, CourseCreation> courseloadlist;
+    Student studentdetails;
     
     
-    
-    
+
     /**
      * Creates new form RegisterJPanel
      */
-    public RegisterCoursesJPanel(JPanel workareaContainer, CourseCreationHistory cc,StudentDirectory studentdir) {
+    public RegisterCoursesJPanel(JPanel workareaContainer, CourseCreationHistory cc, Student studentdetails, StudentDirectory studentdir) {
         this.workareaContainer = workareaContainer;
         this.cc = cc;
-        this.studentdir= studentdir;
-        
-
+        this.studentdir = studentdir;
+        this.studentdetails = studentdetails;
+            
         initComponents();
 
     }
@@ -181,6 +183,7 @@ public class RegisterCoursesJPanel extends javax.swing.JPanel {
         workareaContainer.remove(this);
         CardLayout layout = (CardLayout) workareaContainer.getLayout();
         layout.previous(workareaContainer);
+        
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailsActionPerformed
@@ -196,16 +199,13 @@ public class RegisterCoursesJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please select a course to register.");
             return;
         }
-        
+
         DefaultTableModel model = (DefaultTableModel) tablenewCourseDetails.getModel();
-        CourseCreation selectedCourse = (CourseCreation) model.getValueAt(selectedRowIndex, 0);
+        CourseCreation registeredCourse = (CourseCreation) model.getValueAt(selectedRowIndex, 0);
         Student student = new Student();
-        
-       
-            
-        
-            
-        student.setSelectedCourse(selectedCourse);
+
+        student.setSelectedCourse(registeredCourse); //Only updating the arrayList
+        studentdetails.addCourseToStudent(registeredCourse); //Updating the arraylist AND THE HASHMAP
 
 //        cc.registerCourse(selectedcourse);
 //        displayTable();
@@ -229,7 +229,6 @@ public class RegisterCoursesJPanel extends javax.swing.JPanel {
         for (CourseCreation courseinfo : cc.getCourseHistory()) {
             Object[] row = new Object[6];
             row[0] = courseinfo;
-//            row[1] = courseinfo.getCourseName();
             row[1] = 4; //credits
             row[2] = courseinfo.getCourseRegion();
             row[3] = courseinfo.getProf().getProfNUID();

@@ -4,16 +4,27 @@
  */
 package admin;
 
+import classes.ProfessorDirectory;
+import classes.StudentDirectory;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author visho
  */
 public class adminHomepageJPanel extends javax.swing.JPanel {
-
+private JPanel workareaContainer;
+private StudentDirectory studentdir;
+private ProfessorDirectory profdir;
+      
     /**
      * Creates new form adminHomepageJPanel
      */
-    public adminHomepageJPanel() {
+    public adminHomepageJPanel(JPanel workareaContainer,StudentDirectory studentdir, ProfessorDirectory profdir) {
+        this.workareaContainer = workareaContainer;  
+        this.studentdir= studentdir;
+        this.profdir = profdir;
         initComponents();
     }
 
@@ -26,19 +37,71 @@ public class adminHomepageJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        manageStudent = new javax.swing.JButton();
+        manageFaculty = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        manageStudent.setText("Manage Student");
+        manageStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageStudentActionPerformed(evt);
+            }
+        });
+
+        manageFaculty.setText("Manage Faculty");
+        manageFaculty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageFacultyActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Welcome Admin");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 856, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(340, 340, 340)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(manageFaculty, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(manageStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(359, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 665, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(177, 177, 177)
+                .addComponent(manageStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(manageFaculty, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(287, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void manageStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStudentActionPerformed
+        // TODO add your handling code here:
+        ManageStudent manageStudent = new ManageStudent(workareaContainer, studentdir);
+        workareaContainer.add(manageStudent);
+        ((CardLayout) workareaContainer.getLayout()).next(workareaContainer);
+    }//GEN-LAST:event_manageStudentActionPerformed
+
+    private void manageFacultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageFacultyActionPerformed
+        // TODO add your handling code here:
+        ManageProfessor manageFaculty = new ManageProfessor(workareaContainer, profdir);
+        workareaContainer.add("ManageFaculty", manageFaculty);
+        ((CardLayout) workareaContainer.getLayout()).next(workareaContainer);
+    }//GEN-LAST:event_manageFacultyActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton manageFaculty;
+    private javax.swing.JButton manageStudent;
     // End of variables declaration//GEN-END:variables
 }

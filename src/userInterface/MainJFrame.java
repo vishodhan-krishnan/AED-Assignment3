@@ -6,6 +6,7 @@ package userInterface;
 
 import classes.CourseCreationHistory;
 import classes.Professor;
+import classes.Student;
 import classes.StudentDirectory;
 import java.awt.CardLayout;
 
@@ -20,6 +21,7 @@ public class MainJFrame extends javax.swing.JFrame {
     CourseCreationHistory cch;
     Professor prof;
     StudentDirectory SDirectory;
+    Student studentdetails;
     /**
      * Creates new form MainJFrame
      */
@@ -27,6 +29,7 @@ public class MainJFrame extends javax.swing.JFrame {
         this.cch = new CourseCreationHistory();
         this.prof = new Professor();
         this.SDirectory= new StudentDirectory();
+        this.studentdetails = new Student();
         initComponents();
         
         
@@ -112,7 +115,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStudentLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentLoginActionPerformed
-        LoginJPanel panel = new LoginJPanel(workAreaContainer,cch,prof,SDirectory);
+        LoginJPanel panel = new LoginJPanel(workAreaContainer,cch,prof,studentdetails);
         workAreaContainer.add("LoginJPanel",panel);
         CardLayout layout = (CardLayout) workAreaContainer.getLayout();
         layout.next(workAreaContainer);
