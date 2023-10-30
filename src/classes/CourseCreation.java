@@ -19,8 +19,17 @@ public class CourseCreation {
     private String CourseDay1, CourseDay1Time, CourseDay2, CourseDay2Time;
     Professor prof;
     private String grades;
-    private boolean assessmentType = false; //false if project; True if Exam
+    private boolean courseCompleted = false;
 
+    public boolean isCourseCompleted() {
+        return courseCompleted;
+    }
+
+    public void setCourseCompleted(boolean courseCompleted) {
+        this.courseCompleted = courseCompleted;
+    }
+
+    
     public String getGrades() {
         return grades;
     }

@@ -30,7 +30,7 @@ public class StudentDirectory {
         this.StudentDirectory = StudentDirectory;
     }
 
-    public Student addStudent(String NUID,String Name,String password, String EmailID, String PhoneNo) {
+    public Student addStudent(String Name ,String NUID,String password, String EmailID, String PhoneNo) {
         Student s = new Student();
         s.setStudentName(Name);
         s.setStudentNUID(NUID);

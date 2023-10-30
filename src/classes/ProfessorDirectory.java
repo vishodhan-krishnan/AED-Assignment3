@@ -33,10 +33,14 @@ public class ProfessorDirectory {
         this.ProfDirectory = ProfDirectory;
     }
 
-    public Professor addProfessor(String profID, String password) {
+    public Professor addProfessor(String profName, String profNUID, String password,String specialty, String EmailID, String phoneNo) {
         Professor p = new Professor();
-        p.setProfNUID(profID);
+        p.setProfName(profName);
+        p.setProfNUID(profNUID);
         p.setPassword(password);
+        p.setSpecialty(specialty);
+        p.setProfEmailID(EmailID);
+        p.setProfPhoneNo(phoneNo);
         ProfDirectory.add(p);
         return p;
     }

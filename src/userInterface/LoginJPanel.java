@@ -35,14 +35,15 @@ public class LoginJPanel extends javax.swing.JPanel {
      */
     public LoginJPanel(JPanel jPanel, CourseCreationHistory cch, Professor prof, Student studentdetails) {
         studentDir = new StudentDirectory();
-        studentDir.addStudent("123456", "Student1", BCrypt.hashpw("123456", BCrypt.gensalt()), "stud1@neu.edu", "1234512345");
-        studentDir.addStudent("123", "Student2", BCrypt.hashpw("123", BCrypt.gensalt()), "stud2@neu.edu", "123123123");
-        studentDir.addStudent("1234", "Student3", BCrypt.hashpw("1234", BCrypt.gensalt()), "stud3@neu.edu", "1111122222");
+        studentDir.addStudent( "Student1","123456", BCrypt.hashpw("123456", BCrypt.gensalt()), "stud1@neu.edu", "1234512345");
+        studentDir.addStudent( "Student2","123", BCrypt.hashpw("123", BCrypt.gensalt()), "stud2@neu.edu", "123123123");
+        studentDir.addStudent( "Student3","1234", BCrypt.hashpw("1234", BCrypt.gensalt()), "stud3@neu.edu", "1111122222");
 
         Pdirectory = new ProfessorDirectory();
-        Pdirectory.addProfessor("1234", BCrypt.hashpw("1234", BCrypt.gensalt()));
-        Pdirectory.addProfessor("12345", BCrypt.hashpw("12345", BCrypt.gensalt()));
-        Pdirectory.addProfessor("123", BCrypt.hashpw("123", BCrypt.gensalt()));
+        Pdirectory.addProfessor("Prof1", "1234", BCrypt.hashpw("1234", BCrypt.gensalt()),"Java", "prof1@neu.edu", "1234123412");
+        Pdirectory.addProfessor("Prof2", "123", BCrypt.hashpw("123", BCrypt.gensalt()),"Software Dev", "prof2@neu.edu", "1231231231");
+        Pdirectory.addProfessor("Prof1", "12345", BCrypt.hashpw("12345", BCrypt.gensalt()),"Python", "prof3@neu.edu", "1234512345");
+
 
         this.workareaContainer = jPanel;
         this.cch = cch;

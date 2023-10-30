@@ -45,7 +45,7 @@ public class CourseCreationJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        CourseNameTxt = new javax.swing.JTextField();
+        txtCourseName = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -53,21 +53,21 @@ public class CourseCreationJPanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        Time2ComboBox = new javax.swing.JComboBox<>();
-        Time1ComboBox = new javax.swing.JComboBox<>();
-        Day2ComboBox = new javax.swing.JComboBox<>();
-        Day1ComboBox = new javax.swing.JComboBox<>();
+        comboBoxTime2 = new javax.swing.JComboBox<>();
+        comboBoxTime1 = new javax.swing.JComboBox<>();
+        comboBoxDay2 = new javax.swing.JComboBox<>();
+        comboBoxDay1 = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        CourseStartDateTxt = new javax.swing.JTextField();
-        CourseEndDatext = new javax.swing.JTextField();
+        txtCourseStartDate = new javax.swing.JTextField();
+        txtCourseEndDate = new javax.swing.JTextField();
         btnSaveCourse = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnAddNewCourse = new javax.swing.JButton();
         TermComboBox = new javax.swing.JComboBox<>();
-        CourseRegion = new javax.swing.JTextField();
+        txtCourseRegion = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        CourseDescTxt = new javax.swing.JTextArea();
+        txtCourseDetails = new javax.swing.JTextArea();
 
         jLabel1.setText("Select Term");
 
@@ -81,7 +81,7 @@ public class CourseCreationJPanel extends javax.swing.JPanel {
 
         jLabel7.setText("Course Details");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Course Schedule");
 
@@ -95,29 +95,29 @@ public class CourseCreationJPanel extends javax.swing.JPanel {
 
         jLabel12.setText("Select time");
 
-        Time2ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "9 AM- 11 AM", "11 30 PM - 1 30 PM", "2 PM -  4 PM", "4 30 PM - 6 30 PM", "7 PM - 9 PM", " " }));
+        comboBoxTime2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "9 AM- 11 AM", "11 30 PM - 1 30 PM", "2 PM -  4 PM", "4 30 PM - 6 30 PM", "7 PM - 9 PM", " " }));
 
-        Time1ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "9 AM- 11 AM", "11 30 PM - 1 30 PM", "2 PM -  4 PM", "4 30 PM - 6 30 PM", "7 PM - 9 PM", " " }));
+        comboBoxTime1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "9 AM- 11 AM", "11 30 PM - 1 30 PM", "2 PM -  4 PM", "4 30 PM - 6 30 PM", "7 PM - 9 PM", " " }));
 
-        Day2ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" }));
+        comboBoxDay2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" }));
 
-        Day1ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" }));
+        comboBoxDay1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" }));
 
         jLabel13.setText("Course Start date");
 
         jLabel14.setText("Course End Date");
 
-        CourseStartDateTxt.setEditable(false);
-        CourseStartDateTxt.addActionListener(new java.awt.event.ActionListener() {
+        txtCourseStartDate.setEditable(false);
+        txtCourseStartDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CourseStartDateTxtActionPerformed(evt);
+                txtCourseStartDateActionPerformed(evt);
             }
         });
 
-        CourseEndDatext.setEditable(false);
-        CourseEndDatext.addActionListener(new java.awt.event.ActionListener() {
+        txtCourseEndDate.setEditable(false);
+        txtCourseEndDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CourseEndDatextActionPerformed(evt);
+                txtCourseEndDateActionPerformed(evt);
             }
         });
 
@@ -128,7 +128,7 @@ public class CourseCreationJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Add new course");
+        btnAddNewCourse.setText("Add new course");
 
         TermComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fall 2023", "Spring 2024", " " }));
         TermComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -137,17 +137,17 @@ public class CourseCreationJPanel extends javax.swing.JPanel {
             }
         });
 
-        CourseRegion.addActionListener(new java.awt.event.ActionListener() {
+        txtCourseRegion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CourseRegionActionPerformed(evt);
+                txtCourseRegionActionPerformed(evt);
             }
         });
 
         jLabel15.setText("Region");
 
-        CourseDescTxt.setColumns(20);
-        CourseDescTxt.setRows(5);
-        jScrollPane1.setViewportView(CourseDescTxt);
+        txtCourseDetails.setColumns(20);
+        txtCourseDetails.setRows(5);
+        jScrollPane1.setViewportView(txtCourseDetails);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -156,35 +156,33 @@ public class CourseCreationJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3)
-                                .addGap(111, 111, 111))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(CourseStartDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)))
-                        .addGap(85, 85, 85)
-                        .addComponent(jLabel14)
-                        .addGap(18, 18, 18)
-                        .addComponent(CourseEndDatext, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(91, 91, 91))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(535, 535, 535))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(jLabel7))
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel13)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtCourseStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(119, 119, 119)
+                                        .addComponent(jLabel14)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtCourseEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
+                                                .addComponent(jLabel7))
+                                            .addComponent(jLabel2))
+                                        .addGap(608, 608, 608)))
                                 .addGap(0, 125, Short.MAX_VALUE))))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -196,14 +194,14 @@ public class CourseCreationJPanel extends javax.swing.JPanel {
                                 .addContainerGap()
                                 .addComponent(jLabel5)
                                 .addGap(37, 37, 37)
-                                .addComponent(CourseNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(63, 63, 63)
                                 .addComponent(jLabel15)
                                 .addGap(33, 33, 33)
-                                .addComponent(CourseRegion, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtCourseRegion, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(115, 115, 115)
+                                .addGap(128, 128, 128)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel11)
@@ -212,25 +210,27 @@ public class CourseCreationJPanel extends javax.swing.JPanel {
                                         .addComponent(jLabel10)
                                         .addGap(34, 34, 34)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Day1ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(Day2ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(comboBoxDay1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(comboBoxDay2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(37, 37, 37)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel12))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Time1ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Time2ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(comboBoxTime1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboBoxTime2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(135, 135, 135)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSaveCourse)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(177, 177, 177)
+                .addComponent(btnSaveCourse)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAddNewCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(161, 161, 161))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,56 +244,56 @@ public class CourseCreationJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(CourseNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSaveCourse)
-                            .addComponent(jButton2)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CourseRegion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCourseRegion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
-                .addGap(58, 58, 58)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CourseEndDatext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CourseStartDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCourseEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCourseStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
                     .addComponent(jLabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Day1ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxDay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
-                    .addComponent(Time1ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxTime1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Day2ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxDay2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
-                    .addComponent(Time2ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxTime2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(87, 87, 87))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSaveCourse)
+                    .addComponent(btnAddNewCourse))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CourseStartDateTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CourseStartDateTxtActionPerformed
+    private void txtCourseStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCourseStartDateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CourseStartDateTxtActionPerformed
+    }//GEN-LAST:event_txtCourseStartDateActionPerformed
 
-    private void CourseEndDatextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CourseEndDatextActionPerformed
+    private void txtCourseEndDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCourseEndDateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CourseEndDatextActionPerformed
+    }//GEN-LAST:event_txtCourseEndDateActionPerformed
 
     private void btnSaveCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveCourseActionPerformed
 
@@ -305,10 +305,10 @@ public class CourseCreationJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please select a term");
         }
 
-        if (CourseNameTxt.getText() != null) {
+        if (txtCourseName.getText() != null) {
 
-            if (CourseNameTxt.getText().matches("^[a-zA-Z]+$")) {
-                name = CourseNameTxt.getText();
+            if (txtCourseName.getText().matches("^[a-zA-Z]+$")) {
+                name = txtCourseName.getText();
             } else {
                 JOptionPane.showMessageDialog(this, "Please enter only string input");
             }
@@ -317,9 +317,9 @@ public class CourseCreationJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please select a term");
         }
 
-        if (CourseDescTxt.getText() != null) {
+        if (txtCourseDetails.getText() != null) {
 
-            courseDesc = CourseNameTxt.getText();
+            courseDesc = txtCourseName.getText();
 
         } else {
             JOptionPane.showMessageDialog(this, "Please select a term");
@@ -328,25 +328,25 @@ public class CourseCreationJPanel extends javax.swing.JPanel {
         if (Term.equals("Fall 2023")) {
             String SDate = "7 Sepetember 2023";
             String EDate = "16 December 2023";
-            CourseStartDateTxt.setText(SDate);
-            CourseEndDatext.setText(EDate);
+            txtCourseStartDate.setText(SDate);
+            txtCourseEndDate.setText(EDate);
         }
         if (Term.equals("Spring 2024")) {
             String SDate = "7 Sepetember 2023";
             String EDate = "16 December 2023";
-            CourseStartDateTxt.setText(SDate);
-            CourseEndDatext.setText(EDate);
+            txtCourseStartDate.setText(SDate);
+            txtCourseEndDate.setText(EDate);
         }
 
-        if (Day1ComboBox.getSelectedItem().equals(Day2ComboBox.getSelectedItem())) {
+        if (comboBoxDay1.getSelectedItem().equals(comboBoxDay2.getSelectedItem())) {
             JOptionPane.showMessageDialog(this, "Please select different days for the schedule");
         } else {
 
-            day1 = (String) Day1ComboBox.getSelectedItem();
-            day2 = (String) Day2ComboBox.getSelectedItem();
-            time1 = (String) Time1ComboBox.getSelectedItem();
-            time2 = (String) Time2ComboBox.getSelectedItem();
-            Region = (String) CourseRegion.getText();
+            day1 = (String) comboBoxDay1.getSelectedItem();
+            day2 = (String) comboBoxDay2.getSelectedItem();
+            time1 = (String) comboBoxTime1.getSelectedItem();
+            time2 = (String) comboBoxTime2.getSelectedItem();
+            Region = (String) txtCourseRegion.getText();
         }
         //Add region code here
 
@@ -372,24 +372,19 @@ public class CourseCreationJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_TermComboBoxActionPerformed
 
-    private void CourseRegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CourseRegionActionPerformed
+    private void txtCourseRegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCourseRegionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CourseRegionActionPerformed
+    }//GEN-LAST:event_txtCourseRegionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea CourseDescTxt;
-    private javax.swing.JTextField CourseEndDatext;
-    private javax.swing.JTextField CourseNameTxt;
-    private javax.swing.JTextField CourseRegion;
-    private javax.swing.JTextField CourseStartDateTxt;
-    private javax.swing.JComboBox<String> Day1ComboBox;
-    private javax.swing.JComboBox<String> Day2ComboBox;
     private javax.swing.JComboBox<String> TermComboBox;
-    private javax.swing.JComboBox<String> Time1ComboBox;
-    private javax.swing.JComboBox<String> Time2ComboBox;
+    private javax.swing.JButton btnAddNewCourse;
     private javax.swing.JButton btnSaveCourse;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> comboBoxDay1;
+    private javax.swing.JComboBox<String> comboBoxDay2;
+    private javax.swing.JComboBox<String> comboBoxTime1;
+    private javax.swing.JComboBox<String> comboBoxTime2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -406,5 +401,10 @@ public class CourseCreationJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtCourseDetails;
+    private javax.swing.JTextField txtCourseEndDate;
+    private javax.swing.JTextField txtCourseName;
+    private javax.swing.JTextField txtCourseRegion;
+    private javax.swing.JTextField txtCourseStartDate;
     // End of variables declaration//GEN-END:variables
 }
