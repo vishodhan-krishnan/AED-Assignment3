@@ -9,6 +9,7 @@ import classes.Professor;
 import classes.Student;
 import classes.StudentDirectory;
 import java.awt.CardLayout;
+import javax.swing.JLabel;
 
 
 
@@ -31,10 +32,14 @@ public class MainJFrame extends javax.swing.JFrame {
         this.SDirectory= new StudentDirectory();
         this.studentdetails = new Student();
         initComponents();
-        
-        
+    
+    
     }
 
+    
+
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,7 +52,10 @@ public class MainJFrame extends javax.swing.JFrame {
         jSplitPane1 = new javax.swing.JSplitPane();
         btnJPanel = new javax.swing.JPanel();
         btnStudentLogin = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         workAreaContainer = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,12 +64,17 @@ public class MainJFrame extends javax.swing.JFrame {
         jSplitPane1.setMinimumSize(new java.awt.Dimension(1000, 800));
         jSplitPane1.setPreferredSize(new java.awt.Dimension(1000, 800));
 
-        btnJPanel.setBackground(new java.awt.Color(0, 255, 51));
+        btnJPanel.setBackground(new java.awt.Color(255, 153, 51));
+        btnJPanel.setForeground(new java.awt.Color(0, 0, 0));
         btnJPanel.setMaximumSize(new java.awt.Dimension(1000, 200));
         btnJPanel.setMinimumSize(new java.awt.Dimension(100, 100));
         btnJPanel.setPreferredSize(new java.awt.Dimension(1000, 200));
 
+        btnStudentLogin.setBackground(new java.awt.Color(204, 204, 204));
+        btnStudentLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnStudentLogin.setForeground(new java.awt.Color(0, 0, 0));
         btnStudentLogin.setText("WELCOME");
+        btnStudentLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         btnStudentLogin.setMaximumSize(new java.awt.Dimension(100, 25));
         btnStudentLogin.setMinimumSize(new java.awt.Dimension(100, 25));
         btnStudentLogin.setPreferredSize(new java.awt.Dimension(150, 50));
@@ -71,12 +84,15 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userInterface/logo.png"))); // NOI18N
+
         javax.swing.GroupLayout btnJPanelLayout = new javax.swing.GroupLayout(btnJPanel);
         btnJPanel.setLayout(btnJPanelLayout);
         btnJPanelLayout.setHorizontalGroup(
             btnJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnJPanelLayout.createSequentialGroup()
-                .addContainerGap(798, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 586, Short.MAX_VALUE)
                 .addComponent(btnStudentLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
         );
@@ -86,14 +102,35 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(btnStudentLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
+            .addGroup(btnJPanelLayout.createSequentialGroup()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jSplitPane1.setTopComponent(btnJPanel);
 
-        workAreaContainer.setBackground(new java.awt.Color(0, 102, 204));
+        workAreaContainer.setBackground(new java.awt.Color(255, 222, 180));
         workAreaContainer.setMinimumSize(new java.awt.Dimension(600, 300));
         workAreaContainer.setPreferredSize(new java.awt.Dimension(1000, 800));
         workAreaContainer.setLayout(new java.awt.CardLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userInterface/college.jpg"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 689, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        workAreaContainer.add(jPanel1, "card2");
+
         jSplitPane1.setRightComponent(workAreaContainer);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -159,6 +196,9 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnJPanel;
     private javax.swing.JButton btnStudentLogin;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JPanel workAreaContainer;
     // End of variables declaration//GEN-END:variables

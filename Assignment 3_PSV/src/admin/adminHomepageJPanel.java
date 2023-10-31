@@ -81,7 +81,7 @@ public adminHomepageJPanel(JPanel workareaContainer, StudentDirectory studentdir
         jList1 = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 232, 173));
+        setBackground(new java.awt.Color(255, 222, 180));
 
         manageStudent.setBackground(new java.awt.Color(153, 153, 153));
         manageStudent.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N

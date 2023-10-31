@@ -60,7 +60,7 @@ public class RegisterCoursesJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         btnRegister = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 204));
+        setBackground(new java.awt.Color(255, 222, 180));
         setForeground(new java.awt.Color(0, 0, 0));
         setPreferredSize(new java.awt.Dimension(801, 600));
 
